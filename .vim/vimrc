@@ -1,9 +1,7 @@
 " =================== File Info =====================
-"
 "  Author: jessun1990@gmail.com
-"  Filename: vimrc
 "  Desc: basic config of vim/nvim
-"
+"  Location: ~/.config/vimrc
 " ===================================================
 "
 "
