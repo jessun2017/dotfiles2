@@ -1,0 +1,15 @@
+10System:    10Host jessun-pc-man 10Kernel 4.19.36-1-MANJARO x86_64 10bits 64 10Desktop i3 4.16.1 
+           10Distro Manjaro Linux 
+10Machine:   10Type Desktop 10Mobo HUANANZHI 
+           10model X79 INTEL (INTEL Xeon E5/Corei7 DMI2 - C600/C200 Cipset 10v V3.4E 10serial <filter> 
+           10UEFI American Megatrends 10v 4.6.5 10date 04/24/2018 
+10CPU:       10Quad Core Intel Xeon E5-1620 0 10type MT MCP 10speed 1275 MHz 10min/max 1200/3800 MHz 
+10Graphics:  10Device-1 NVIDIA GP106 [GeForce GTX 1060 3GB] 10driver nouveau 10v kernel 
+           10Display x11 10server X.Org 1.20.4 10driver nouveau 10unloaded modesetting,vesa 
+           10resolution 1920x1080~60Hz, 1920x1080~60Hz 
+           10OpenGL 10renderer NV136 10v 4.3 Mesa 19.0.3 
+10Network:   10Device-1 Realtek RTL8111/8168/8411 PCI Express Gigabit Ethernet 10driver r8168 
+           10Device-2 Realtek RTL8188EUS 802.11n Wireless Network Adapter 10type USB 10driver r8188eu 
+10Drives:    10Local Storage 10total 1.02 TiB 10used 30.41 GiB (2.9%) 
+10Info:      10Processes 261 10Uptime 36m 10Memory 15.60 GiB 10used 1.78 GiB (11.4%) 10Client shell wrapper 
+           10inxi 3.0.33 
