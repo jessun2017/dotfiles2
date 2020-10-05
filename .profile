@@ -10,7 +10,6 @@ export BROWSER=/usr/bin/palemoon
 #  Desc: profile
 #  Location: ~/.profile
 # ===================================================
-
 case "$(uname)" in
     Linux*)     machine="linux";;
     Darwin*)    machine="mac";;
@@ -18,6 +17,12 @@ case "$(uname)" in
     MINGW*)     machine="mingw";;
     *)          machine="UNKNOWN:${unameOut}"
 esac
+
+if [ -f "/usr/bin/nvim" ]; then
+    export EDITOR="/usr/bin/nvim"
+elif [ -f "/usr/bin/vim" ]; then
+    export EDITOR="/usr/bin/vim"
+fi
 
 if [ "$machine" == "linux" ]; then 
     if [ -x "$(command -v setxkbmap)" ]; then
