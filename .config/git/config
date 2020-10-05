@@ -1,0 +1,29 @@
+# git config
+[alias]
+    lg             = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+    log1           = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+    log2           = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+    log3           = log --format='%Cred%h%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset%C(yellow)%d%Creset' --no-merges
+    stash-list     = stash list --pretty=format:'%Cblue%gd%Cred: %C(yellow)%s'q
+
+[user]
+    name           = jessun
+    email          = jessun1990@gmail.com
+[core]
+    editor         = "nvim"
+[diff]
+    tool           = vimdiff
+[http]
+	proxy          = 
+[https]
+	proxy          = 
+[core]
+    quotepath      = false
+[i18n]  
+    commitencoding = utf-8
+[gui]  
+    encoding       = utf-8
+[pull]
+	rebase         = false
+[url "git@10.186.18.21:universe"]
+	insteadOf      = http://10.186.18.21/universe
