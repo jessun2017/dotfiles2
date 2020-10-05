@@ -36,7 +36,7 @@ if [ "$machine" == "linux" ]; then
     export QT_IM_MODULE=ibus
     export XMODIFIERS=@im=ibus
     export GLFW_IM_MODULE=ibus
-    export LC_ALL=C
+    export LC_ALL=zh_CN.UTF-8
     export LC_CTYPE=
 fi
 
