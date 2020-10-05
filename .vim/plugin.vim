@@ -1,9 +1,7 @@
 " =================== File Info =====================
-"
 "  Author: jessun1990@gmail.com
-"  Filename: ~/.vim/plugin.vim
 "  Desc: plugins config of vim/nvim
-"
+"  Location: ~/.vim/plugin.vim
 " ===================================================
 "
 " ================== Basic Config ==================
@@ -34,9 +32,6 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
-" golang ======================
-" neovim + gopls
-
 " UI ==========================
 Plug 'sheerun/vim-polyglot'           " 语法高亮
 Plug 'flazz/vim-colorschemes'        " 配色主题
@@ -44,101 +39,88 @@ Plug 'Xuyuanp/scrollbar.nvim'
 Plug 'itchyny/lightline.vim'
 
 " general =====================
-"Plug 'asins/vimcdoc'
-Plug 'scrooloose/nerdtree'
-"Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" Plug 'ryanoasis/vim-devicons'
-Plug 'tommcdo/vim-fugitive-blame-ext' " git 信息
-Plug 'tpope/vim-fugitive'             " git 相关
-" Plug 'voldikss/vim-floaterm'
-Plug 'kristijanhusak/vim-carbon-now-sh'
 
 " code ========================
+Plug 'tommcdo/vim-fugitive-blame-ext' " git 信息
+Plug 'tpope/vim-fugitive'             " git 相关
 Plug 'dense-analysis/ale'
 Plug 'liuchengxu/vista.vim' " tag
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 Plug 'junegunn/vim-easy-align'
+
+" coc.nvim
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-
-Plug 'junegunn/vim-easy-align'
-
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-
-" Plug 'iamcco/coc-zi', {'do': 'yarn install --frozen-lockfile'}
-Plug 'fannheyward/coc-markdownlint', {'do': 'yarn install --frozen-lockfile', 'for': 'markdown'}
 Plug 'fannheyward/coc-marketplace', {'do': 'yarn install --frozen-lockfile'}
-Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile', 'for': 'rust'}
 Plug 'iamcco/coc-actions', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile'}
+
+Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 Plug 'iamcco/coc-spell-checker', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-git', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile', 'for': 'css'}
-Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
 Plug 'voldikss/coc-bookmark', {'do': 'yarn install --frozen-lockfile'}
 Plug 'weirongxu/coc-explorer', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile', 'for': 'json'}
-Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile', 'for': 'yaml'}
-Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile', 'for': 'css'}
+" Plug 'iamcco/coc-zi', {'do': 'yarn install --frozen-lockfile'}
+
+" rust
+Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile', 'for': 'rust'}
+" golang 
+" gopls
 
 Plug 'ap/vim-css-color'
 Plug 'scrooloose/nerdcommenter'       " 注释
 Plug 'tpope/vim-surround'             " 快捷操作
+
+" file ========================
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+Plug 'fannheyward/coc-markdownlint', {'do': 'yarn install --frozen-lockfile', 'for': 'markdown'}
+Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile', 'for': 'json'}
+Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile', 'for': 'yaml'}
+Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile', 'for': 'css'}
 
 call plug#end()
 "
 " ===================================================
 "
 " ======== 'iamcco/markdown-preview.nvim' ===========
-"
 " set to 1, nvim will open the preview window after entering the markdown buffer
 " default: 0
 let g:mkdp_auto_start = 0
-
 let g:mkdp_browserfunc = 'g:open_browser'
-
 " set to 1, the nvim will auto close current preview window when change
 " from markdown buffer to another buffer
 " default: 1
 let g:mkdp_auto_close = 0
-
 " set to 1, the vim will refresh markdown when save the buffer or
 " leave from insert mode, default 0 is auto refresh markdown as you edit or
 " move the cursor
 " default: 0
 let g:mkdp_refresh_slow = 0
-
 " set to 1, the MarkdownPreview command can be use for all files,
 " by default it can be use in markdown file
 " default: 0
 let g:mkdp_command_for_global = 0
-
 " set to 1, preview server available to others in your network
 " by default, the server listens on localhost (127.0.0.1)
 " default: 0
 let g:mkdp_open_to_the_world = 0
-
 " use custom IP to open preview page
 " useful when you work in remote vim and preview on local browser
 " more detail see: https://github.com/iamcco/markdown-preview.nvim/pull/9
 " default empty
 let g:mkdp_open_ip = ''
-
 " specify browser to open preview page
 " default: ''
 let g:mkdp_browser = ''
-
 " set to 1, echo preview page url in command line when open preview page
 " default is 0
 let g:mkdp_echo_preview_url = 0
-
 " a custom vim function name to open preview page
 " this function will receive url as param
 " default is empty
 let g:mkdp_browserfunc = ''
-
 " options for markdown render
 " mkit: markdown-it options for render
 " katex: katex options for math
@@ -165,19 +147,15 @@ let g:mkdp_preview_options = {
 
 " use a custom markdown style must be absolute path
 " like '/Users/username/markdown.css' or expand('~/markdown.css')
-let g:mkdp_markdown_css = expand('~/.vim/markdown.css')
-
+let g:mkdp_markdown_css = expand('~/.vim/github-markdown.css')
 " use a custom highlight style must absolute path
 " like '/Users/username/highlight.css' or expand('~/highlight.css')
 let g:mkdp_highlight_css = ''
-
 " use a custom port to start server or random for empty
 let g:mkdp_port = ''
-
 " preview page title
 " ${name} will be replace with the file name
 let g:mkdp_page_title = '「${name}」'
-"
 " ===================================================
 "
 " =============== 'ense-analysis/ale' ===============
@@ -218,32 +196,6 @@ let g:ale_sign_warning = '--'
 " nmap <leader>gg <Plug>(ale_go_to_definition)
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
-" ===================================================
-"
-" ============== 'scrooloose/nerdtree' ==============
-" nmap <leader>nt :NERDTreeToggle<CR>
-let NERDTreeShowHidden=1  " 显示隐藏文件
-let NERDTreeMapOpenIntab='\r'
-let NERDTreeMinimalUI=1   " 去除第一行的帮助提示
-let NERDTreeWinSize=30    " 在左边占多宽
-let NERDTreeChDirMode = 2 " 当前目录的设定
-let g:NERDTreeDirArrowExpandable = ''
-let g:NERDTreeDirArrowCollapsible = ''
-" "自动退出
- autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
-" autocmd vimenter * NERDTree "打开vim时自动打开
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?",
-    \ }
 " ===================================================
 " 
 " ============='scrooloose/nerdcommenter' ===========
@@ -536,10 +488,6 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 autocmd BufWritePre *.go :call CocActionAsync('runCommand', 'editor.action.organizeImport')
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
-" ====================================================
-"
-" =============== 'majutsushi/tagbar' ================
-" nnoremap <silent> <Leader>tb :Tagbar<CR>
 " ====================================================
 "
 " ============== 'liuchengxu/vista.vim' ==============
