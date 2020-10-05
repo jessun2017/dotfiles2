@@ -1,0 +1,219 @@
+" =================== File Info =====================
+"
+"  Author: jessun1990@gmail.com
+"  Filename: vimrc
+"  Desc: basic config of vim/nvim
+"
+" ===================================================
+"
+"
+" =============== Auto reload vimrc =================
+"
+"augroup myvimrchooks
+    "au!
+    "autocmd bufwritepost vimrc source ~/.vim/vimrc
+"augroup END
+""
+"" ===================================================
+""
+"" ================== Basic Config ===================
+set tags=./.tags;,.tags
+" for large files
+syntax on
+set shell=/bin/bash
+set mmp=100000
+set regexpengine=1
+set redrawtime=100000
+set ttimeout
+set ttimeoutlen=0
+set nottimeout
+set synmaxcol=2048
+set lazyredraw
+set ttyfast
+syntax sync minlines=128
+let loaded_matchparen = 1
+
+set path+=**
+set mouse=v             " mouse=a: 使用鼠标选择区域复制到选择缓冲区; mouse=v: 使用鼠标复制内容到剪切板
+set scrolloff=4         " 光标和屏幕上线保持4行距离
+set autoread            " 文件变化，vim自动reload
+au CursorHold,CursorHoldI * checktime
+au FocusGained,BufEnter * :checktime
+
+set noswapfile          " 不创建 swap 文件
+set nobk                " 不创建备份文件
+set updatetime=300      " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
+set cmdheight=1         " Give more space for displaying messages.
+set nowritebackup
+set noshowmode
+set wildmode=longest,list
+set wildmode=full
+set showtabline=2
+set wildchar=<Tab> wildcharm=<C-Z>
+set wildmenu
+set nowrap
+set conceallevel=0
+set selection=inclusive " 选择文本时，光标内容也在内
+set backspace=indent,eol,start
+set autowrite           " 自动保存
+" set confirm           " 在处理未保存或者只读文件的时候，弹出确认
+set history=1000
+set iskeyword+=_,$,@,%,#,-
+set viminfo+=!          " 保存全局变量
+set nrformats=          " 把文件中所有数字当成十进制来处理
+set showmatch           " 自动高亮匹配的括号
+set tabpagemax=30       " VIM 默认最大第打开 tab 最大数量
+set nu
+" set cuc 列线
+set cuc
+" set cul 行线
+set cul
+set cc=120
+set textwidth=120       " 设置多少列开始换行，0 表示不限制
+" set rnu " set relative_numbser
+" set nornu
+set ru " set ruler
+set showcmd " 右下角显示指令
+"set t_Co=256
+"""""set t_BE=0
+set termguicolors
+set vb t_vb=
+set guioptions-=l            " 禁止显示滚动条
+set guioptions-=L
+set guioptions-=r
+set guioptions-=R
+set guioptions-=m            " 禁止显示菜单和工具条
+set guioptions-=T
+set laststatus=2
+set shortmess+=c
+set nopaste
+set signcolumn=yes
+set hidden
+set clipboard=unnamedplus
+filetype on
+filetype plugin indent on
+filetype indent on
+set autoindent
+" set foldmethod=syntax
+set complete=.
+set nofoldenable
+set smartindent
+set smarttab
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+set linebreak
+set nolist
+set expandtab
+"%retab " 加!是用于处理非空白字符之后的TAB， 即所有的TAB；若不加，则只处理行首的TAB
+%retab!
+set langmenu=zh_CN.UTF-8
+set helplang=cn
+set encoding=utf-8
+scriptencoding utf-8
+language message zh_CN.UTF-8
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1,gbk
+set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
+set ambiwidth=double
+set fo+=mB
+set incsearch                " 搜索时大小写不敏感
+set hlsearch                 " 搜索高亮
+set ignorecase               " 忽略大小写
+set smartcase                " 当搜索关键字有大写时，不忽略大小写
+"
+" ================== Color Scheme ==================
+if has('gui_running')                     " GVim
+    set guioptions-=e
+    set background=dark
+    if has("gui_gtk2") || has("gui_gtk3")
+    " Linux Gui
+    elseif has("gui_win32")
+    " win32/win64 GVim
+    elseif has("gui_macvim")
+    " MacVim
+        "set guifont=Fira\ Code\ Retina:h14
+        set macligatures
+        "colorscheme desert
+        set linespace=0
+    else
+        echo "Unknown GUI system !!!"
+    endif
+else
+    set background=dark                   " termial vim
+    "set guifont=Fira\ Code\ Retina:h14
+    if has('mac')
+        "colorscheme desert
+    else
+        "colorscheme desert
+    endif
+endif
+" ===================================================
+"
+" ==================== Key Map ======================
+" augroup relative_numbser
+"     autocmd!
+"     autocmd InsertEnter * :set norelativenumber
+"     autocmd InsertLeave * :set relativenumber
+" augroup END
+
+augroup json_autocmd
+  autocmd!
+  autocmd FileType json set autoindent
+  autocmd FileType json set formatoptions=tcq2l
+  autocmd FileType json set textwidth=0 shiftwidth=2
+  autocmd FileType json set softtabstop=2 tabstop=2
+  autocmd FileType json set expandtab
+  autocmd FileType json set foldmethod=syntax
+  autocmd FileType json syntax match Comment +\/\/.\+$+
+augroup END
+" ===================================================
+"
+" ==================== Key Map ======================
+"
+let mapleader=";"
+" cnoremap ls ls<cr>:b<space>
+nnoremap gj j
+nnoremap gk k
+nnoremap j gj
+nnoremap k gk
+" use ctrl+h/j/k/l switch window
+" noremap <C-h> <C-w>h
+" noremap <C-j> <C-w>j
+" noremap <C-k> <C-w>k
+" noremap <C-l> <C-w>l
+noremap <C-h> :bp<CR>
+noremap <C-l> :bn<CR>
+
+" 在插入模式下任意位置直接切到新的一行
+"inoremap <C-j> <C-o>o
+"inoremap <C-l> <C-o>A
+nmap <leader>nh :nohl<CR>
+nmap <leader>np :set nopaste<CR>
+nmap <leader>ps :set paste<CR>
+nmap <leader>sh :shell<CR>
+nmap <leader>tc :tabc<CR>
+nmap <leader>tn :tabnew<CR>
+vmap <leader>y "+y<CR>
+"noremap <leader>y "*y
+"noremap <leader>p "*p
+"noremap <leader>Y "+y
+"noremap <leader>P "+p
+"
+" ===================================================
+"
+" ================= Basic Function ==================
+"
+" Function to source only if file exists {
+function! SourceIfExists(file)
+  if filereadable(expand(a:file))
+    exe 'source' a:file
+  endif
+endfunction
+" }"
+"
+" ===================================================
+"
+" ================== Load Plugins ===================
+"
+call SourceIfExists("~/.vim/plugin.vim")
+" ===================================================
