@@ -66,13 +66,14 @@ end
 #
 # ========== Env Vars ===========
 export TERM="xterm-256color"
-export LC_ALL=zh_CN.UTF-8
 export LANG=zh_CN.UTF-8
-
 
 # Golang
 export GO111MODULE=on
 export GOPROXY=https://goproxy.io,direct
+if test -d "$HOME/.gvm/environments/default"
+    bass source "$HOME/.gvm/environments/default"
+end
 
 # Local bin
 if test -d "$HOME/.local/bin/"
