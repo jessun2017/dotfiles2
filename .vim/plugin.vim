@@ -9,7 +9,6 @@
 if has('nvim')
     if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
       silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
       autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
 else
@@ -33,10 +32,10 @@ else
 endif
 
 " UI ==========================
-Plug 'sheerun/vim-polyglot'           " 语法高亮
+Plug 'sheerun/vim-polyglot'          " 语法高亮
 Plug 'flazz/vim-colorschemes'        " 配色主题
-Plug 'Xuyuanp/scrollbar.nvim'
-Plug 'itchyny/lightline.vim'
+Plug 'Xuyuanp/scrollbar.nvim'        " 滚动条
+Plug 'itchyny/lightline.vim'         " 底部条
 
 " general =====================
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -47,7 +46,7 @@ Plug 'tommcdo/vim-fugitive-blame-ext' " git 信息
 Plug 'tpope/vim-fugitive'             " git 相关
 Plug 'dense-analysis/ale'
 Plug 'liuchengxu/vista.vim' " tag
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+" Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 Plug 'junegunn/vim-easy-align'
 
 " coc.nvim
@@ -55,7 +54,6 @@ Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'fannheyward/coc-marketplace', {'do': 'yarn install --frozen-lockfile'}
 Plug 'iamcco/coc-actions', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile'}
-
 Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 Plug 'iamcco/coc-spell-checker', {'do': 'yarn install --frozen-lockfile'}
@@ -65,7 +63,8 @@ Plug 'weirongxu/coc-explorer', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'iamcco/coc-zi', {'do': 'yarn install --frozen-lockfile'}
 
 " rust
-Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile', 'for': 'rust'}
+" rust-analyzer
+
 " golang 
 " gopls
 
@@ -79,9 +78,7 @@ Plug 'fannheyward/coc-markdownlint', {'do': 'yarn install --frozen-lockfile', 'f
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile', 'for': 'json'}
 Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile', 'for': 'yaml'}
 Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile', 'for': 'css'}
-
 call plug#end()
-"
 " ===================================================
 "
 " ======== 'iamcco/markdown-preview.nvim' ===========
@@ -104,7 +101,7 @@ let g:mkdp_refresh_slow = 0
 let g:mkdp_command_for_global = 0
 " set to 1, preview server available to others in your network
 " by default, the server listens on localhost (127.0.0.1)
-" default: 0
+" dfault: 0
 let g:mkdp_open_to_the_world = 0
 " use custom IP to open preview page
 " useful when you work in remote vim and preview on local browser
@@ -113,7 +110,7 @@ let g:mkdp_open_to_the_world = 0
 let g:mkdp_open_ip = ''
 " specify browser to open preview page
 " default: ''
-let g:mkdp_browser = ''
+let g:mkdp_browser = 'google-chrome-unstable'
 " set to 1, echo preview page url in command line when open preview page
 " default is 0
 let g:mkdp_echo_preview_url = 0
@@ -279,8 +276,10 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 " ===================================================
 "
 " ========================'fzf.vim' =====================
-nmap <Leader>p :<C-U><C-R>=printf("Files")<CR><CR>
+nmap <space>f :<C-U><C-R>=printf("Files")<CR><CR>
+nmap <space>g :<C-U><C-R>=printf("RG")<CR><CR>
 "
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 function! RipgrepFzf(query, fullscreen)
   let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
   let initial_command = printf(command_fmt, shellescape(a:query))
@@ -328,7 +327,6 @@ inoremap <expr> <c-x><c-s> fzf#vim#complete({
   \ 'options': '--multi --reverse --margin 15%,0',
   \ 'left':    20})
 
-command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 "
 let g:fzf_preview_window = 'right:60%'
 " " [Buffers] Jump to the existing window if possible
@@ -349,7 +347,7 @@ let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 " 让代码更加易于纵向排版，以=或,符号对齐，使用:Tab /=即按等号对齐
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 xmap ga <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g. <Leader>aip)
+" Start interactive EasyAlign for a motion/text object (e.g. <leader>aip)
 nmap ga <Plug>(EasyAlign)
 " ====================================================
 "
@@ -362,9 +360,8 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-nnoremap <silent> <space>g :<C-u>CocList<CR>
-nnoremap <silent> <space>t :<C-u>CocList grep<CR>
-nnoremap <silent> <space>f :<C-u>CocList files<CR>
+" nnoremap <silent> <space>g :<C-u>CocList grep<CR>
+" nnoremap <silent> <space>f :<C-u>CocList files<CR>
 command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
 
 function! s:check_back_space() abort
@@ -471,7 +468,8 @@ nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 " nnoremap <silent> <space>e :CocCommand explorer<CR>
-nnoremap <silent> <leader>nt :CocCommand explorer<CR>
+nnoremap <silent> <space>x :CocCommand explorer<CR>
+" nnoremap <silent> <leader>nt :CocCommand explorer<CR>
 
 " Show commands.
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
@@ -484,14 +482,14 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent> <space>r  :<C-u>CocListResume<CR>
 
 autocmd BufWritePre *.go :call CocActionAsync('runCommand', 'editor.action.organizeImport')
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 " ====================================================
 "
 " ============== 'liuchengxu/vista.vim' ==============
-nnoremap <silent> <Leader>vt :Vista!!<CR>
+nnoremap <silent> <space>v :Vista!!<CR>
 " How each level is indented and what to prepend.
 " This could make the display more compact or more spacious.
 " e.g., more compact: ["▸ ", ""]
@@ -526,7 +524,7 @@ let g:vista#renderer#enable_icon = 0
 autocmd FileType vista nnoremap <buffer> <silent> aa :<c-u>call vista#cursor#FoldOrJump()<CR>
 " ====================================================
 "
-" ================ 'Yggdroot/LeaderF' ================
+" ================ 'Yggdroot/leaderF' ================
 " don't show the help in normal mode
 " let g:Lf_GtagsAutoGenerate = 1
 " let g:Lf_Gtagslabel = 'native-pygments'
@@ -542,26 +540,26 @@ autocmd FileType vista nnoremap <buffer> <silent> aa :<c-u>call vista#cursor#Fol
 " if has('mac')
 "    let g:Lf_Ctags = '/usr/local/bin/ctags'
 " endif
-" " :LeaderfFile 搜索当前目录下所有文件
-" " :LeaderfMru 搜索最常用文件
-" noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
-" noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
-" noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
-" noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
-" noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
-" noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR><CR>
+" " :leaderfFile 搜索当前目录下所有文件
+" " :leaderfMru 搜索最常用文件
+" noremap <leader>fb :<C-U><C-R>=printf("leaderf buffer %s", "")<CR><CR>
+" noremap <leader>fm :<C-U><C-R>=printf("leaderf mru %s", "")<CR><CR>
+" noremap <leader>ft :<C-U><C-R>=printf("leaderf bufTag %s", "")<CR><CR>
+" noremap <leader>fl :<C-U><C-R>=printf("leaderf line %s", "")<CR><CR>
+" noremap <C-B> :<C-U><C-R>=printf("leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
+" noremap <C-F> :<C-U><C-R>=printf("leaderf! rg -e %s ", expand("<cword>"))<CR><CR>
 " " search visually selected text literally
-" xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
-" noremap go :<C-U>Leaderf! rg --recall<CR>
-" " should use `Leaderf gtags --update` first
-" noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
-" noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
-" noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
-" noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
-" noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
+" xnoremap gf :<C-U><C-R>=printf("leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
+" noremap go :<C-U>leaderf! rg --recall<CR>
+" " should use `leaderf gtags --update` first
+" noremap <leader>fr :<C-U><C-R>=printf("leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+" noremap <leader>fd :<C-U><C-R>=printf("leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+" noremap <leader>fo :<C-U><C-R>=printf("leaderf! gtags --recall %s", "")<CR><CR>
+" noremap <leader>fn :<C-U><C-R>=printf("leaderf gtags --next %s", "")<CR><CR>
+" noremap <leader>fp :<C-U><C-R>=printf("leaderf gtags --previous %s", "")<CR><CR>
 "
-" "nmap <Leader>p :<C-U><C-R>=printf("Leaderf rg --fuzzy")<CR><CR>
-" "nmap <Leader>p :<C-U><C-R>=printf("Leaderf rg --regexMode")<CR><CR>
+""nmap <leader>p :<C-U><C-R>=printf("leaderf rg --fuzzy")<CR><CR>
+""nmap <leader>p :<C-U><C-R>=printf("leaderf rg --regexMode")<CR><CR>
 " highlight Lf_hl_match gui=bold guifg=Blue cterm=bold ctermfg=21
 " highlight Lf_hl_matchRefine  gui=bold guifg=Magenta cterm=bold ctermfg=201
 " let g:Lf_PopupPalette = {
@@ -696,21 +694,16 @@ let g:unite_force_overwrite_statusline = 1
 let g:vimfiler_force_overwrite_statusline = 1
 let g:vimshell_force_overwrite_statusline = 1
 
-nmap <Leader>1 <Plug>lightline#bufferline#go(1)
-nmap <Leader>2 <Plug>lightline#bufferline#go(2)
-nmap <Leader>3 <Plug>lightline#bufferline#go(3)
-nmap <Leader>4 <Plug>lightline#bufferline#go(4)
-nmap <Leader>6 <Plug>lightline#bufferline#go(6)
-nmap <Leader>7 <Plug>lightline#bufferline#go(7)
-nmap <Leader>8 <Plug>lightline#bufferline#go(8)
-nmap <Leader>9 <Plug>lightline#bufferline#go(9)
-nmap <Leader>0 <Plug>lightline#bufferline#go(10)
+" nmap <leader>1 <Plug>lightline#bufferline#go(1)
+" nmap <leader>2 <Plug>lightline#bufferline#go(2)
+" nmap <leader>3 <Plug>lightline#bufferline#go(3)
 
 let g:lightline#ale#indicator_checking = "\uf110"
 let g:lightline#ale#indicator_infos = "\uf129"
 let g:lightline#ale#indicator_warnings = "[Wrn]"
 let g:lightline#ale#indicator_errors = "[Err]"
 let g:lightline#ale#indicator_ok = "\uf00c"
+
 autocmd BufEnter ALELint call lightline#update()
 autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
 " ====================================================
@@ -724,7 +717,8 @@ function! s:GrepArgs(...)
 endfunction
 
 " Keymapping for grep word under cursor with interactive mode
-nnoremap <silent> <Leader>cf :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
+nnoremap <silent> <space>W :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
+nnoremap <silent> <space>w  :exe 'CocList -I --normal --input='.expand('<cword>').' words'<CR>
 vnoremap <leader>g :<C-u>call <SID>GrepFromSelected(visualmode())<CR>
 nnoremap <leader>g :<C-u>set operatorfunc=<SID>GrepFromSelected<CR>g@
 
@@ -742,15 +736,14 @@ function! s:GrepFromSelected(type)
   let @@ = saved_unnamed_register
   execute 'CocList grep '.word
 endfunction
-nnoremap <silent> <space>w  :exe 'CocList -I --normal --input='.expand('<cword>').' words'<CR>
 " ====================================================
 "
-" ================'neoclide/coc-git' ==============
+" ================'neoclide/coc-git' =================
 " navigate chunks of current buffer
-nmap [g <Plug>(coc-git-prevchunk)
-nmap ]g <Plug>(coc-git-nextchunk)
+nmap g[ <Plug>(coc-git-prevchunk)
+nmap g] <Plug>(coc-git-nextchunk)
 " show chunk diff at current position
-" nmap gs <Plug>(coc-git-chunkinfo)
+nmap gs <Plug>(coc-git-chunkinfo)
 " show commit contains current position
 nmap gc <Plug>(coc-git-commit)
 " create text object for git chunks
@@ -897,3 +890,138 @@ let g:go_highlight_types = 1
 let g:go_highlight_variable_assignments = 1
 let g:go_highlight_variable_declarations = 1
 " ===================================================
+"
+" ==================== 'Key Map' ====================
+" === scrooloose/nerdcommenter' 
+" <leader>cc 注释掉在可视模式下选择的当前行或文本
+" <leader>cn 与cc相同，但强制嵌套。
+" <leader>c<space> 切换所选行的注释状态。如果最上面的选定行被注释，则所有选定的行均未注释，反之亦然。
+" <leader>cm 仅使用一组多部分定界符注释给定的行。
+" <leader>ci 分别切换所选行的注释状态。
+" <leader>cs 用漂亮的块格式布局注释掉选定的行。
+" <leader>cy 与cc相同，除了首先删除注释行。
+" <leader>c$ 注释当前行从光标到行尾。
+" <leader>cA 在行尾添加注释定界符，并在它们之间进入插入模式。
+" <leader>ca 切换到另一组定界符。
+" <leader>cl 与<leader>cc 相同，除了定界符在左侧对齐
+" <leader>cb 与<leader>cc 相同，除了定界符在两侧对齐
+"
+" === junegunn/fzf
+" :Files 列出当前目录下所有文件
+" :GitFiles 等同 `$git status`
+" :GFiles? 等同 `$ git status"`
+" :Buffers 列出所有的 buffers
+" :Colors  列出所有的配色方案
+" :Ag 使用 Ag 命令进行搜索
+" :Rg 使用 Rg 命令进行搜索
+" :Lines 按行搜索所有打开的buffers
+" :BLines 按行搜索当前打开的buffers
+" :Tags Tags in the project (ctags -R)
+" :BTags Tags in the current buffer
+" :Marks Marks
+" :Windows Windows
+" :Locate 等同 Locate
+" :History 'v:oldfiles and open buffers'
+" :History: 命令历史
+" :History/ 搜索历史
+" :Snippets Snippets(https://github.com/SirVer/ultisnips)
+" :Commits 浏览 git commits 历史
+" :BCommits	浏览当前 buffer 的 git commits 历史
+" :Maps normal mode 下的按键映射
+" :Helptags
+" :Filetypes
+" :GGrep 等同 `git grep`
+" 上述命令大多支持`CTRL-T`(new tab)， `CTRL-X`(new split)， `CTRL-V`(new vertical split)
+" 如果命令后面加上感叹号(!)，就变成全屏显示
+" nmap <leader><tab> <plug>(fzf-maps-n) 不知如何使用
+" xmap <leader><tab> <plug>(fzf-maps-x) 不知如何使用
+" omap <leader><tab> <plug>(fzf-maps-o) 不知如何使用
+"
+" Insert mode completion
+" imap <c-x><c-k> <plug>(fzf-complete-word) 插入单词
+" imap <c-x><c-f> <plug>(fzf-complete-path) 插入路径
+" imap <c-x><c-l> <plug>(fzf-complete-line) 插入行
+" imap <c-x><c-k> 单词补全
+" imap <c-x><c-s> 单词补全造句
+"
+" === 'vim-easy-align'
+" xmap ga visual mode 下对齐
+" nmap ga normal mode 下对齐
+"
+" === 'neoclide/coc.nvim'
+" <space>f 等同:Rg
+" nmap [g coc 诊断信息下一个
+" nmap ]g coc 诊断信息上一个
+" nmap gd 跳转到定义处
+" nmap gs 跳转到定义处，split
+" nmap gv 跳转到定义处，vsplit
+" nmap gt 跳转到定义处，tab
+" nmap gy 跳转到类型定义处
+" nmap gi 跳转到实现处
+" nmap gr 查找引用处
+" nnoremap K 显示文档
+" nmap <leader>rn 单词重命名
+" nmap <leader>f 格式化
+" xmap <leader>f 格式化
+" xmap <leader>a 选择
+" nmap <leader>a 选择
+" nmap <leader>ac 将 cocAction 在当前行应用
+" nmap <leader>qf 自动修复当前行
+" xmap if 选区，表示函数，函数内部文本
+" omap if 选区，表示函数，函数内部文本
+" xmap af 选区，表示函数，全部函数文本
+" omap af 选区，表示函数，全部函数文本
+" :Format 格式化
+" :Fold 折叠
+" :OR 自动 import 依赖
+" noremap <space>a coc 诊断
+" noremap <space>e coc 插件列表
+" noremap <space>x coc-explorer 窗口
+" noremap <space>c coclist commands 列表
+" noremap <space>o coclist outline 
+" noremap <space>s coclist -I symbols
+" noremap <space>j CocNext
+" noremap <space>k CocPrev
+" noremap <space>r CocListResume
+" noremap <space>y vim 内置粘贴板
+"
+" ==='liuchengxu/vista.vim' 
+" nnoremap <space>v :Vista!!
+"
+" ==='neoclide/coc-list' 
+" noremap <space>W 搜索单词，范围为当前目录下所有文本
+" noremap <space>w 搜索单词，范围为当前 buffer
+" noremap <space>g 搜索单词，同 :RG
+"
+" ==='neoclide/coc-git' 
+" nmap g[ coc-git-prevchunk
+" nmap g] coc-git-nextchunk
+" nmap gs coc-git-chunkinfo
+" nmap gc coc-git-commit
+" omap ig coc-git-chunk-inner
+" xmap ig coc-git-chunk-inner
+" omap ag coc-git-chunk-outer
+" xmap ag coc-git-chunk-outer
+"
+" === 'weirongxu/coc-explorer'
+" nmap <space>ed :CocCommand explorer --preset .vim<CR> 显示 ~/.vim 目录
+" nmap <space>ef :CocCommand explorer --preset floatingLeftside<CR> 左侧浮动窗口打开 floatingLeftside
+" nmap <space>el :CocList explPresets<CR>
+"
+" ==='voldikss/coc-bookmark'
+" nmap <space>m :CocList bookmark<CR> 打印所有 bookmark
+" nmap mj <Plug>(coc-bookmark-next) 跳转到下一个bookmark
+" nmap mk <Plug>(coc-bookmark-prev) 跳转到上一个bookmark
+" nmap m, <Plug>(coc-bookmark-toggle) bookmark toggle
+"
+" === 'neoclide/coc-snippets'
+" imap <C-l> <Plug>(coc-snippets-expand)
+" vmap <C-j> <Plug>(coc-snippets-select)
+" let g:coc_snippet_next = '<c-j>'
+" let g:coc_snippet_prev = '<c-k>'
+" imap <C-j> <Plug>(coc-snippets-expand-jump)
+"
+" === 'iamcco/coc-actions'
+" xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+" nmap <silent> <leader>a :<C-u>set operatorfunc=SID>cocActionsOpenFromSelected<CR>
+" ===================================================e

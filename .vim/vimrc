@@ -147,7 +147,7 @@ else
 endif
 " ===================================================
 "
-" ==================== Key Map ======================
+" ==================== file format ======================
 " augroup relative_numbser
 "     autocmd!
 "     autocmd InsertEnter * :set norelativenumber
@@ -166,9 +166,23 @@ augroup json_autocmd
 augroup END
 " ===================================================
 "
-" ==================== Key Map ======================
+" ================= Basic Function ==================
+" Function to source only if file exists {
+function! SourceIfExists(file)
+  if filereadable(expand(a:file))
+    exe 'source' a:file
+  endif
+endfunction
+" }"
+" ===================================================
 "
-let mapleader=";"
+" ================== Load Plugins ===================
+call SourceIfExists("~/.vim/plugin.vim")
+" ===================================================
+"
+" ==================== Key Map ======================
+let mapleader=" "
+" nnoremap <space> <Nop>
 " cnoremap ls ls<cr>:b<space>
 nnoremap gj j
 nnoremap gk k
@@ -188,30 +202,12 @@ noremap <C-l> :bn<CR>
 nmap <leader>nh :nohl<CR>
 nmap <leader>np :set nopaste<CR>
 nmap <leader>ps :set paste<CR>
-nmap <leader>sh :shell<CR>
-nmap <leader>tc :tabc<CR>
+" nmap <leader>sh :shell<CR>
+" nmap <leader>tc :tabc<CR>
 nmap <leader>tn :tabnew<CR>
 vmap <leader>y "+y<CR>
 "noremap <leader>y "*y
 "noremap <leader>p "*p
 "noremap <leader>Y "+y
 "noremap <leader>P "+p
-"
-" ===================================================
-"
-" ================= Basic Function ==================
-"
-" Function to source only if file exists {
-function! SourceIfExists(file)
-  if filereadable(expand(a:file))
-    exe 'source' a:file
-  endif
-endfunction
-" }"
-"
-" ===================================================
-"
-" ================== Load Plugins ===================
-"
-call SourceIfExists("~/.vim/plugin.vim")
 " ===================================================
