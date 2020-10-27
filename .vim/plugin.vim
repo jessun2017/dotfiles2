@@ -278,6 +278,7 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 " ========================'fzf.vim' =====================
 nmap <space>f :<C-U><C-R>=printf("Files")<CR><CR>
 nmap <space>g :<C-U><C-R>=printf("RG")<CR><CR>
+nmap <space>b :<C-U><C-R>=printf("Buffers")<CR><CR>
 "
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 function! RipgrepFzf(query, fullscreen)
