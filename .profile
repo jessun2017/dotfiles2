@@ -28,12 +28,12 @@ if [ "$machine" == "linux" ]; then
     if [ -x "$(command -v setxkbmap)" ]; then
         setxkbmap -option caps:swapescape
     fi
-    if [ -x "$(command -v google-chrome-stable)" ]; then
-        export BROWSER=google-chrome-stable
+    if [ -x "$(command -v google-chrome-unstable)" ]; then
+        export BROWSER=google-chrome-unstable
     elif [ -x "$(command -v google-chrome-beta)" ]; then
         export BROWSER=google-chrome-beta
-    elif [ -x "$(command -v google-chrome-unstable)" ]; then
-        export BROWSER=google-chrome-unstable
+    elif [ -x "$(command -v google-chrome-stable)" ]; then
+        export BROWSER=google-chrome-stable
     fi
 
     export LANG=zh_CN.UTF-8
