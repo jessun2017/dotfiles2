@@ -54,6 +54,7 @@ Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'fannheyward/coc-marketplace', {'do': 'yarn install --frozen-lockfile'}
 Plug 'iamcco/coc-actions', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile'}
+Plug 'josa42/coc-go', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 Plug 'iamcco/coc-spell-checker', {'do': 'yarn install --frozen-lockfile'}
