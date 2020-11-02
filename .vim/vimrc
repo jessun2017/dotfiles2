@@ -66,7 +66,7 @@ set nu
 set cuc
 " set cul 行线
 set cul
-set cc=120
+" set cc=120
 set textwidth=120       " 设置多少列开始换行，0 表示不限制
 " set rnu " set relative_numbser
 " set nornu
