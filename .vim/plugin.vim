@@ -411,7 +411,7 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+nmap <space>rn <Plug>(coc-rename)
 
 " Formatting selected code.
 " xmap <leader>f  <Plug>(coc-format-selected)
@@ -488,6 +488,10 @@ nnoremap <silent> <space>r  :<C-u>CocListResume<CR>
 
 autocmd BufWritePre *.go :call CocActionAsync('runCommand', 'editor.action.organizeImport')
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+inoremap <nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+inoremap <nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
 " ====================================================
 "
 " ============== 'liuchengxu/vista.vim' ==============
@@ -962,7 +966,7 @@ let g:go_highlight_variable_declarations = 1
 " nmap gi 跳转到实现处
 " nmap gr 查找引用处
 " nnoremap K 显示文档
-" nmap <leader>rn 单词重命名
+" nmap ;rn 单词重命名
 " nmap <leader>f 格式化
 " xmap <leader>f 格式化
 " xmap <leader>a 选择

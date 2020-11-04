@@ -63,9 +63,9 @@ set showmatch           " 自动高亮匹配的括号
 set tabpagemax=30       " VIM 默认最大第打开 tab 最大数量
 set nu
 " set cuc 列线
-set cuc
+" set cuc
 " set cul 行线
-set cul
+" set cul
 " set cc=120
 set textwidth=120       " 设置多少列开始换行，0 表示不限制
 " set rnu " set relative_numbser
@@ -182,7 +182,7 @@ call SourceIfExists("~/.vim/plugin.vim")
 "
 " ==================== Key Map ======================
 let mapleader=" "
-" nnoremap <space> <Nop>
+nnoremap <space> <Nop>
 " cnoremap ls ls<cr>:b<space>
 nnoremap gj j
 nnoremap gk k
