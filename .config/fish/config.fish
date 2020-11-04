@@ -71,7 +71,7 @@ export LANG=zh_CN.UTF-8
 # Golang
 export GO111MODULE=on
 export GOPROXY=https://goproxy.io,direct
-if test -d "$HOME/.gvm/environments/default"
+if test -e "$HOME/.gvm/environments/default"
     bass source "$HOME/.gvm/environments/default"
 end
 
@@ -103,3 +103,5 @@ if test -d "$HOME/.yarn/bin/"
     set -gx PATH "$HOME/.yarn/bin/" $PATH
 end
 # ===============================
+export GOPRIVATE=actiontech.cloud
+export GOINSECURE=actiontech.cloud
