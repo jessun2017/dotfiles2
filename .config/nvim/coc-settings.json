@@ -3,6 +3,25 @@
   "bookmark.signHl": "Tag",
   "diagnostic.level": "hint",
   "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": [
+        "go.mod",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ],
+      "filetypes": [
+        "go"
+      ],
+      "initializationOptions": {
+        "usePlaceholders": true,
+        "completeUnimported": true,
+        "symbolMatcher": "Fuzzy",
+        "symbolStyle": "dynamic",
+        "experimentalPackageCacheKey": true
+      }
+    },
     "bash": {
       "command": "bash-language-server",
       "args": [
@@ -21,6 +40,7 @@
   "rust-analyzer.cargo.loadOutDirsFromCheck": true,
   "rust-analyzer.procMacro.enable": true,
   "coc.preferences.formatOnSaveFiletypes": [
+    "json",
     "css",
     "markdown",
     "rust",
@@ -138,6 +158,7 @@
   "cSpell.userWords": [
     "Arial",
     "DUPL",
+    "Dble",
     "Dhcp",
     "Glibc",
     "Intellij",
