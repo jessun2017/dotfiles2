@@ -45,14 +45,18 @@ root: ~/
 # attach: false
 
 windows:
-  # - editor:
-  #     layout: main-vertical
-  #     # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-  #     # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-  #     # synchronize: after
-  #     panes:
-  #       - vim
-  #       - guard
-  - main: yay
-  - main2: vim +PlugUpdate
-  - main3: config status
+  - other: 
+  - yay: yay 
+      # layout: main-vertical
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      # panes:
+        # - vim
+        # - guard
+  - vim_update: 
+    - export all_proxy='http://127.0.0.1:1087'; export http_proxy='http://127.0.0.1:1087'; export https_proxy='http://127.0.0.1:1087'; git config --global http.proxy '127.0.0.1:1087'; git config --global https.proxy '127.0.0.1:1087'
+    - vim +PlugUpdate
+
+  - config: 
+    - git --git-dir=(echo $HOME)/.cfg/ --work-tree=(echo $HOME) status

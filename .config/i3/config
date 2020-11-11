@@ -233,7 +233,7 @@ exec --no-startup-id /$HOME/.config/polybar/launch.sh
 
 bar {
     i3bar_command i3bar
-    output DVI-D-1
+    output eDP-1
     mode hide
     position bottom
     colors {
