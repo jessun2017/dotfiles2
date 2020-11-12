@@ -15,7 +15,7 @@
         "go"
       ],
       "initializationOptions": {
-        "usePlaceholders": true,
+        "usePlaceholders": false,
         "completeUnimported": true,
         "symbolMatcher": "Fuzzy",
         "symbolStyle": "dynamic",
