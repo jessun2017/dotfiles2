@@ -10,9 +10,9 @@
 [diff]
     tool           = vimdiff
 [http]
-	proxy = 
+	proxy = 127.0.0.1:1087
 [https]
-	proxy = 
+	proxy = 127.0.0.1:1087
 [core]
     quotepath      = false
 [i18n]  
@@ -23,10 +23,10 @@
 	rebase         = false
 [url "git@10.186.18.21:universe"]
 	insteadOf      = http://10.186.18.21/universe
+[user]
+	name = jessun
+	email = jessun1990@gmail.com
 [includeIf "gitdif:~"]
     path = ~/.config/git/gitconfig
 [includeIf "gitdir:~/workbench/actiontech/"]
     path = ~/workbench/actiontech/.gitconfig
-[user]
-	name = jessun
-	email = jessun1990@gmail.com
