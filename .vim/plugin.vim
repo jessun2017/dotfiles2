@@ -34,7 +34,6 @@ endif
 " UI ==========================
 Plug 'sheerun/vim-polyglot'          " 语法高亮
 Plug 'flazz/vim-colorschemes'        " 配色主题
-Plug 'Xuyuanp/scrollbar.nvim'        " 滚动条
 Plug 'itchyny/lightline.vim'         " 底部条
 
 " general =====================
@@ -61,6 +60,7 @@ Plug 'iamcco/coc-spell-checker', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-git', {'do': 'yarn install --frozen-lockfile'}
 Plug 'voldikss/coc-bookmark', {'do': 'yarn install --frozen-lockfile'}
 Plug 'weirongxu/coc-explorer', {'do': 'yarn install --frozen-lockfile'}
+Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile', 'for': 'rust'}
 " Plug 'iamcco/coc-zi', {'do': 'yarn install --frozen-lockfile'}
 
 " rust
