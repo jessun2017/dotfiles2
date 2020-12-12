@@ -770,14 +770,13 @@ endfunction
 if has("gui_running") " GUI
     if has("gui_macvim") " MacVim
         "set guifont=JetBrains\ Mono:h17
-        colorscheme mod8
         autocmd BufEnter * call RemoveWavyline()
-        "colorscheme NeoSolarized
     elseif " Linux Or Windows Gvim
+
     endif
 else " Terminal
     " colorscheme mod8
-    colorscheme NeoSolarized
+    colorscheme hybrid_reverse
     if has('mac') " MacOS iterm2 or termial
         " colorscheme mod8
         " colorscheme lucario
