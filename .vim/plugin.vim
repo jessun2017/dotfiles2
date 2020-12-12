@@ -34,6 +34,7 @@ endif
 " UI ==========================
 Plug 'sheerun/vim-polyglot'          " 语法高亮
 Plug 'flazz/vim-colorschemes'        " 配色主题
+Plug 'overcache/NeoSolarized'
 Plug 'itchyny/lightline.vim'         " 底部条
 
 " general =====================
@@ -776,7 +777,7 @@ if has("gui_running") " GUI
     endif
 else " Terminal
     " colorscheme mod8
-    colorscheme solarized8_dark_high
+    colorscheme NeoSolarized
     if has('mac') " MacOS iterm2 or termial
         " colorscheme mod8
         " colorscheme lucario
