@@ -775,7 +775,8 @@ if has("gui_running") " GUI
     elseif " Linux Or Windows Gvim
     endif
 else " Terminal
-    colorscheme mod8
+    " colorscheme mod8
+    colorscheme solarized8_dark_high
     if has('mac') " MacOS iterm2 or termial
         " colorscheme mod8
         " colorscheme lucario

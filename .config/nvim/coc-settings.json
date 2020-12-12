@@ -1,4 +1,5 @@
 {
+  "workspace.progressTarget": "statusline",
   "bookmark.sign": "⚑",
   "bookmark.signHl": "Tag",
   "diagnostic.level": "hint",
