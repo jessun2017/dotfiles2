@@ -24,8 +24,8 @@ bindsym $mod+Return exec kitty
 bindsym $mod+q kill
 
 # start program launcher
-# bindsym $mod+d exec --no-startup-id /opt/uTools/utools
-bindsym $mod+d exec --no-startup-id rofi -show run
+bindsym $mod+d exec --no-startup-id /opt/uTools/utools
+bindsym $mod+Shift+d exec --no-startup-id rofi -show run
 
 # change focus
 bindsym $mod+h focus left
@@ -233,7 +233,7 @@ exec --no-startup-id /$HOME/.config/polybar/launch.sh
 
 bar {
     i3bar_command i3bar
-    output DP-0
+    output DP-2
     mode hide
     position bottom
     colors {

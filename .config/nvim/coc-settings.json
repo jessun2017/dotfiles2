@@ -41,7 +41,6 @@
   "rust-analyzer.cargo.loadOutDirsFromCheck": true,
   "rust-analyzer.procMacro.enable": true,
   "coc.preferences.formatOnSaveFiletypes": [
-    "json",
     "css",
     "markdown",
     "rust",
