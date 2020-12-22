@@ -62,6 +62,7 @@ Plug 'neoclide/coc-git', {'do': 'yarn install --frozen-lockfile'}
 Plug 'voldikss/coc-bookmark', {'do': 'yarn install --frozen-lockfile'}
 Plug 'weirongxu/coc-explorer', {'do': 'yarn install --frozen-lockfile'}
 Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile', 'for': 'rust'}
+Plug 'josa42/coc-go', {'do': 'yarn install --frozen-lockfile', 'for': 'go'}
 " Plug 'iamcco/coc-zi', {'do': 'yarn install --frozen-lockfile'}
 
 " rust
@@ -1032,3 +1033,4 @@ let g:go_highlight_variable_declarations = 1
 " xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
 " nmap <silent> <leader>a :<C-u>set operatorfunc=SID>cocActionsOpenFromSelected<CR>
 " ===================================================e
+"
