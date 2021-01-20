@@ -63,7 +63,6 @@ Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 Plug 'iamcco/coc-spell-checker', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-git', {'do': 'yarn install --frozen-lockfile'}
-Plug 'voldikss/coc-bookmark', {'do': 'yarn install --frozen-lockfile'}
 Plug 'weirongxu/coc-explorer', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'iamcco/coc-zi', {'do': 'yarn install --frozen-lockfile'}
 
@@ -182,8 +181,8 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_list_window_size = 3
 let g:ale_open_list = 1
 let g:ale_set_quickfix = 1
-let g:ale_rust_rls_executable = '~/.cargo/bin/'
-let g:ale_rust_rls_toolchain = 'nightly'
+" let g:ale_rust_rls_executable = '~/.cargo/bin/'
+" let g:ale_rust_rls_toolchain = 'nightly'
 let g:ale_set_highlights = 1
 let g:ale_sign_column_always = 1   "保持侧边栏可见
 let g:ale_sign_error = '>>'
@@ -775,17 +774,17 @@ if has("gui_running") " GUI
 
     endif
 else " Terminal
-    " colorscheme mod8
-    colorscheme hybrid_material
+    colorscheme mod8
+    " colorscheme hybrid_reverse
     if has('mac') " MacOS iterm2 or termial
-        " colorscheme mod8
+        colorscheme mod8
         " colorscheme lucario
         " colorscheme nord
         " colorscheme nordisk
         " colorscheme cobalt2
         " colorscheme materialtheme
         " colorscheme hybrid_material
-        colorscheme hybrid_reverse
+        " colorscheme hybrid_reverse
     endif " Linux termial
 endif
 " ===================================================
@@ -834,10 +833,10 @@ nmap <space>el :CocList explPresets<CR>
 " ===================================================
 "
 " ============ 'voldikss/coc-bookmark' ==============
-nmap <space>m :CocList bookmark<CR>
-nmap mj <Plug>(coc-bookmark-next)
-nmap mk <Plug>(coc-bookmark-prev)
-nmap m, <Plug>(coc-bookmark-toggle)
+" nmap <space>m :CocList bookmark<CR>
+" nmap mj <Plug>(coc-bookmark-next)
+" nmap mk <Plug>(coc-bookmark-prev)
+" nmap m, <Plug>(coc-bookmark-toggle)
 " ===================================================
 "
 " ============ 'neoclide/coc-snippets' ==============
@@ -1014,12 +1013,6 @@ let g:go_highlight_variable_declarations = 1
 " nmap <space>ed :CocCommand explorer --preset .vim<CR> 显示 ~/.vim 目录
 " nmap <space>ef :CocCommand explorer --preset floatingLeftside<CR> 左侧浮动窗口打开 floatingLeftside
 " nmap <space>el :CocList explPresets<CR>
-"
-" ==='voldikss/coc-bookmark'
-" nmap <space>m :CocList bookmark<CR> 打印所有 bookmark
-" nmap mj <Plug>(coc-bookmark-next) 跳转到下一个bookmark
-" nmap mk <Plug>(coc-bookmark-prev) 跳转到上一个bookmark
-" nmap m, <Plug>(coc-bookmark-toggle) bookmark toggle
 "
 " === 'neoclide/coc-snippets'
 " imap <C-l> <Plug>(coc-snippets-expand)
