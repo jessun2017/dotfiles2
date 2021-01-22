@@ -1,4 +1,5 @@
 {
+  "http.proxy": "127.0.0.1:1087",
   "workspace.progressTarget": "statusline",
   "bookmark.sign": "⚑",
   "bookmark.signHl": "Tag",
@@ -22,8 +23,8 @@
   "rust-analyzer.cargo.loadOutDirsFromCheck": true,
   "rust-analyzer.procMacro.enable": true,
   "rust-analyzer.serverPath": "~/.cargo/bin/rust-analyzer",
-  "rust-analyzer.hoverActions.linksInHover":true,
-  "rust-analyzer.lens.methodReferences":true,
+  "rust-analyzer.hoverActions.linksInHover": true,
+  "rust-analyzer.lens.methodReferences": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "markdown",
