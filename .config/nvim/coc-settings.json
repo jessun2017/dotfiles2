@@ -138,5 +138,10 @@
     "]c": "gitNext",
     "<<": "gitStage",
     ">>": "gitUnstage"
-  }
+  },
+  "cSpell.userWords": [
+    "LLVM",
+    "mkdir",
+    "rustc"
+  ]
 }

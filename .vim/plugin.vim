@@ -775,17 +775,17 @@ if has("gui_running") " GUI
 
     endif
 else " Terminal
-    " colorscheme mod8
-    colorscheme hybrid_material
+    colorscheme mod8
+    " colorscheme hybrid_material
     if has('mac') " MacOS iterm2 or termial
-        " colorscheme mod8
+        colorscheme mod8
         " colorscheme lucario
         " colorscheme nord
         " colorscheme nordisk
         " colorscheme cobalt2
         " colorscheme materialtheme
         " colorscheme hybrid_material
-        colorscheme hybrid_reverse
+        " colorscheme hybrid_reverse
     endif " Linux termial
 endif
 " ===================================================
