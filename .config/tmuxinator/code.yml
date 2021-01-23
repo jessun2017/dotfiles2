@@ -45,7 +45,10 @@ root: ~/workbench/
 # attach: false
 
 windows:
-  - test-codes:
-    - mkdir -p ~/workbench/test-codes
-    - cd ~/workbench/test-codes
+  - rust-lang-examples:
+    - cd ~/workbench/rust/rust-lang/
+  - rino:
+    - cd ~/workbench/rust/rino
+  - jessun2017.github.io:
+    - cd ~/workbench/jessun2017.github.io/
 

@@ -41,6 +41,7 @@ Plug 'sainnhe/forest-night'
 " general =====================
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'voldikss/coc-translator'
 
 " code ========================
 Plug 'tommcdo/vim-fugitive-blame-ext' " git 信息
@@ -58,14 +59,12 @@ Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'fannheyward/coc-marketplace', {'do': 'yarn install --frozen-lockfile'}
 Plug 'iamcco/coc-actions', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'josa42/coc-go', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 Plug 'iamcco/coc-spell-checker', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-git', {'do': 'yarn install --frozen-lockfile'}
-Plug 'voldikss/coc-bookmark', {'do': 'yarn install --frozen-lockfile'}
 Plug 'weirongxu/coc-explorer', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'iamcco/coc-zi', {'do': 'yarn install --frozen-lockfile'}
+Plug 'josa42/coc-sh', {'do': 'yarn install --frozen-lockfile && npm i -g bash-language-server'}
 
 " rust
 Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile', 'for': 'rust'}
@@ -182,8 +181,8 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_list_window_size = 3
 let g:ale_open_list = 1
 let g:ale_set_quickfix = 1
-let g:ale_rust_rls_executable = '~/.cargo/bin/'
-let g:ale_rust_rls_toolchain = 'nightly'
+" let g:ale_rust_rls_executable = '~/.cargo/bin/'
+" let g:ale_rust_rls_toolchain = 'nightly'
 let g:ale_set_highlights = 1
 let g:ale_sign_column_always = 1   "保持侧边栏可见
 let g:ale_sign_error = '>>'
@@ -776,7 +775,6 @@ if has("gui_running") " GUI
     endif
 else " Terminal
     colorscheme mod8
-    " colorscheme hybrid_material
     if has('mac') " MacOS iterm2 or termial
         colorscheme mod8
         " colorscheme lucario
@@ -834,10 +832,10 @@ nmap <space>el :CocList explPresets<CR>
 " ===================================================
 "
 " ============ 'voldikss/coc-bookmark' ==============
-nmap <space>m :CocList bookmark<CR>
-nmap mj <Plug>(coc-bookmark-next)
-nmap mk <Plug>(coc-bookmark-prev)
-nmap m, <Plug>(coc-bookmark-toggle)
+" nmap <space>m :CocList bookmark<CR>
+" nmap mj <Plug>(coc-bookmark-next)
+" nmap mk <Plug>(coc-bookmark-prev)
+" nmap m, <Plug>(coc-bookmark-toggle)
 " ===================================================
 "
 " ============ 'neoclide/coc-snippets' ==============
@@ -1014,12 +1012,6 @@ let g:go_highlight_variable_declarations = 1
 " nmap <space>ed :CocCommand explorer --preset .vim<CR> 显示 ~/.vim 目录
 " nmap <space>ef :CocCommand explorer --preset floatingLeftside<CR> 左侧浮动窗口打开 floatingLeftside
 " nmap <space>el :CocList explPresets<CR>
-"
-" ==='voldikss/coc-bookmark'
-" nmap <space>m :CocList bookmark<CR> 打印所有 bookmark
-" nmap mj <Plug>(coc-bookmark-next) 跳转到下一个bookmark
-" nmap mk <Plug>(coc-bookmark-prev) 跳转到上一个bookmark
-" nmap m, <Plug>(coc-bookmark-toggle) bookmark toggle
 "
 " === 'neoclide/coc-snippets'
 " imap <C-l> <Plug>(coc-snippets-expand)
