@@ -41,15 +41,12 @@ Plug 'sainnhe/forest-night'
 " general =====================
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'voldikss/coc-translator'
 
 " code ========================
 Plug 'tommcdo/vim-fugitive-blame-ext' " git 信息
 Plug 'tpope/vim-fugitive'             " git 相关
 Plug 'dense-analysis/ale'
 Plug 'liuchengxu/vista.vim' " tag
-" Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
-" Plug 'junegunn/vim-easy-align'
 Plug 'ap/vim-css-color'
 Plug 'scrooloose/nerdcommenter'       " 注释
 Plug 'tpope/vim-surround'             " 快捷操作
@@ -64,7 +61,7 @@ Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 Plug 'iamcco/coc-spell-checker', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-git', {'do': 'yarn install --frozen-lockfile'}
 Plug 'weirongxu/coc-explorer', {'do': 'yarn install --frozen-lockfile'}
-Plug 'josa42/coc-sh', {'do': 'yarn install --frozen-lockfile && npm i -g bash-language-server'}
+Plug 'josa42/coc-sh', {'do': 'yarn install --frozen-lockfile && npm i -g bash-language-server', 'for': 'sh'}
 
 " rust
 Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile', 'for': 'rust'}
@@ -72,10 +69,11 @@ Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile', '
 " gopls
 Plug 'josa42/coc-go', {'do': 'yarn install --frozen-lockfile', 'for': 'go'}
 
+" markdown
+Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 
 " file ========================
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
-Plug 'fannheyward/coc-markdownlint', {'do': 'yarn install --frozen-lockfile', 'for': 'markdown'}
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile', 'for': 'json'}
 Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile', 'for': 'yaml'}
 Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile', 'for': 'css'}
@@ -153,7 +151,7 @@ let g:mkdp_highlight_css = ''
 let g:mkdp_port = ''
 " preview page title
 " ${name} will be replace with the file name
-let g:mkdp_page_title = '「${name}」'
+let g:mkdp_page_title = '${name}'
 " ===================================================
 "
 " =============== 'ense-analysis/ale' ===============
