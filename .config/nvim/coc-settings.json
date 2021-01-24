@@ -141,9 +141,12 @@
     ">>": "gitUnstage"
   },
   "cSpell.userWords": [
+    "DUPL",
     "LLVM",
+    "isize",
     "mkdir",
+    "println",
     "rustc",
-    "DUPL"
+    "usize"
   ]
 }
