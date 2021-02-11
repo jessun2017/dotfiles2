@@ -142,11 +142,15 @@
   },
   "cSpell.userWords": [
     "DUPL",
+    "Deref",
     "LLVM",
+    "destructure",
     "isize",
     "mkdir",
     "println",
     "rustc",
-    "usize"
+    "struct",
+    "usize",
+    "xargs"
   ]
 }
