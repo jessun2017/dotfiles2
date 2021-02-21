@@ -143,15 +143,20 @@
   "cSpell.userWords": [
     "Condf",
     "DUPL",
+    "Deref",
     "LLVM",
     "beego",
     "grpc",
     "gtid",
+    "destructure",
     "isize",
     "mkdir",
     "println",
     "rustc",
     "usize",
-    "uuid"
+    "uuid",
+    "struct",
+    "usize",
+    "xargs"
   ]
 }
