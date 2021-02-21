@@ -141,12 +141,17 @@
     ">>": "gitUnstage"
   },
   "cSpell.userWords": [
+    "Condf",
     "DUPL",
     "LLVM",
+    "beego",
+    "grpc",
+    "gtid",
     "isize",
     "mkdir",
     "println",
     "rustc",
-    "usize"
+    "usize",
+    "uuid"
   ]
 }
