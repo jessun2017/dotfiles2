@@ -70,7 +70,7 @@ Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile', '
 Plug 'josa42/coc-go', {'do': 'yarn install --frozen-lockfile', 'for': 'go'}
 
 " markdown
-Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
+" Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 
 " file ========================
