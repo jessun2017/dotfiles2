@@ -68,7 +68,7 @@ set nu
 " set cul
 " set cc=120
 set textwidth=120       " 设置多少列开始换行，0 表示不限制
-" set rnu " set relative_numbser
+set rnu " set relative_numbser
 " set nornu
 set ru " set ruler
 set showcmd " 右下角显示指令
