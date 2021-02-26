@@ -99,6 +99,14 @@ if type -q rustc
     export RUST_SRC_PATH=(rustc --print sysroot)/lib/rustlib/src/rust/library/
 end
 
+# ruby env
+if test -d "$HOME/.rbenv/bin"
+    set -g PATH "$HOME/.rbenv/bin" $PATH
+end
+if test -d "$HOME/.rbenv/shims"
+    set -g PATH "$HOME/.rbenv/shims" $PATH
+end
+
 # yarn
 if test -d "$HOME/.yarn/bin/"
     set -gx PATH "$HOME/.yarn/bin/" $PATH
