@@ -150,10 +150,10 @@
     "mkdir",
     "println",
     "rustc",
-    "usize",
-    "uuid",
     "struct",
     "usize",
+    "usize",
+    "uuid",
     "xargs"
   ]
 }
