@@ -31,6 +31,6 @@
 ; [branch "master"]
 ; mergeoptions = --no-ff
 [http]
-	proxy = 
+	proxy = http://127.0.0.1:1087
 [https]
-	proxy = 
+	proxy = http://127.0.0.1:1087

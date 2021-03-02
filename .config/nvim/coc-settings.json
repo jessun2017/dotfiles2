@@ -1,6 +1,6 @@
 {
+  "go.trace.server": "verbose",
   "http.proxy": "http://127.0.0.1:1087",
-  "diagnostic.level": "hint",
   "languageserver": {
     "bash": {
       "command": "bash-language-server",
