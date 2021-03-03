@@ -142,18 +142,21 @@
     "DUPL",
     "Deref",
     "LLVM",
+    "Udeploy",
+    "Urman",
     "beego",
+    "destructure",
     "grpc",
     "gtid",
-    "destructure",
     "isize",
     "mkdir",
+    "mysqlbackup",
     "println",
     "rustc",
-    "usize",
-    "uuid",
     "struct",
     "usize",
-    "xargs"
+    "uuid",
+    "xargs",
+    "xtrabackup"
   ]
 }
