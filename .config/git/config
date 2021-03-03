@@ -11,10 +11,6 @@
     editor         = "nvim"
 [diff]
     tool           = vimdiff
-[http]
-	proxy = 127.0.0.1:1087
-[https]
-	proxy = 127.0.0.1:1087
 [core]
     quotepath      = false
 [i18n]  
@@ -27,8 +23,14 @@
 	insteadOf      = http://10.186.18.21/universe
 [user]
 	name = jessun
-	email = jessun1990@gmail.com
+	email = jessun.zhang@gmail.com
 [includeIf "gitdif:~"]
     path = ~/.config/git/gitconfig
 [includeIf "gitdir:~/workbench/actiontech/"]
     path = ~/workbench/actiontech/.gitconfig
+; [branch "master"]
+; mergeoptions = --no-ff
+[http]
+	proxy = http://127.0.0.1:1087
+[https]
+	proxy = http://127.0.0.1:1087

@@ -45,7 +45,7 @@ Plug 'junegunn/fzf.vim'
 " code ========================
 Plug 'tommcdo/vim-fugitive-blame-ext' " git 信息
 Plug 'tpope/vim-fugitive'             " git 相关
-Plug 'dense-analysis/ale'
+"Plug 'dense-analysis/ale'
 Plug 'liuchengxu/vista.vim' " tag
 Plug 'ap/vim-css-color'
 Plug 'scrooloose/nerdcommenter'       " 注释
@@ -614,24 +614,6 @@ let g:scrollbar_excluded_filetypes = ['nerdtree']
 " ============= 'itchyny/lightline.vim' ==============
 function! LightlineFilename()
   return expand('%:p')
-  " return expand('%:p:h')
-endfunction
-
-function! StatusDiagnostic() abort
-  let info = get(b:, 'coc_diagnostic_info', {})
-  if empty(info) | return '' | endif
-  let msgs = []
-  if get(info, 'error', 0)
-    call add(msgs, 'E' . info['error'])
-  endif
-  if get(info, 'warning', 0)
-    call add(msgs, 'W' . info['warning'])
-  endif
-  return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
-endfunction
-
-function! CocCurrentFunction()
-    return get(b:, 'coc_current_function', '')
 endfunction
 
 function! BuffGitStatus() abort
@@ -649,17 +631,16 @@ function! LightlineGitBlame()
   return winwidth(0) > 120 ? blame : ''
 endfunction
 
-let g:lightline = {}
 let g:lightline = {
-   \ 'colorscheme': 'seoul256',
+   \ 'colorscheme': 'wombat',
    \ 'active': {
    \    'left': [
    \        ['mode', 'paste', 'gitbranch', 'buffgitstatus', 'progitstatus'],
    \     ],
    \    'right': [
-   \        ['filetype','fileformat', 'fileencoding','lineinfo','percent'],
-   \        ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok'],
-   \        ['blame'],
+   \        ['filetype','fileformat', 'fileencoding','lineinfo', 'percent'],
+   \        ['coc_warning'],
+   \        ['blame']
    \     ],
    \ },
    \ 'component_function': {
@@ -667,48 +648,58 @@ let g:lightline = {
    \   'filename': 'LightlineFilename',
    \   'cocstatus': 'coc#status',
    \   'buffgitstatus': 'BuffGitStatus',
-    \  'currentfunction': 'CocCurrentFunction',
    \   'progitstatus': 'ProGitStatus',
-   \   'statusdiagnostic': 'StatusDiagnostic',
-   \ }
+   \ },
+   \ 'component_expand': {
+   \   'coc_error'        : 'LightlineCocErrors',
+   \   'coc_warning'      : 'LightlineCocWarnings',
+   \   'coc_info'         : 'LightlineCocInfos',
+   \   'coc_hint'         : 'LightlineCocHints',
+   \   'coc_fix'          : 'LightlineCocFixes',
+    \ }, 
 \ }
-" \        ['filename']
-let g:lightline.component_expand = {
-      \  'linter_checking': 'lightline#ale#checking',
-      \  'linter_infos': 'lightline#ale#infos',
-      \  'linter_warnings': 'lightline#ale#warnings',
-      \  'linter_errors': 'lightline#ale#errors',
-      \  'linter_ok': 'lightline#ale#ok',
-      \ }
-" \  'buffers': 'lightline#bufferline#buffers',
-let g:lightline.component_type = {
-      \     'linter_checking': 'right',
-      \     'linter_infos': 'right',
-      \     'linter_warnings': 'warning',
-      \     'linter_errors': 'error',
-      \     'linter_ok': 'right',
-      \ }
-" \     'buffer': 'tabsel',
-let g:lightline.tabline = {'left': [['filename'], ['currentfunction']], 'right': [['currentfunction']]}
 
-let g:lightline#bufferline#show_number  = 1
-let g:lightline#bufferline#shorten_path = 1
-"let g:lightline#bufferline#unnamed      = '[No Name]'
-let g:unite_force_overwrite_statusline = 1
+let g:lightline.component_type = {
+\   'coc_error'        : 'error',
+\   'coc_warning'      : 'warning',
+\   'coc_info'         : 'tabsel',
+\   'coc_hint'         : 'middle',
+\   'coc_fix'          : 'middle',
+\ }
+let g:lightline.tabline = {'left': [['filename']], 'right': [['coc_error']]}
+
+function! s:lightline_coc_diagnostic(kind, sign) abort
+  let info = get(b:, 'coc_diagnostic_info', 0)
+  if empty(info) || get(info, a:kind, 0) == 0
+    return ''
+  endif
+  return printf('%s:%s', a:sign, info[a:kind])
+endfunction
+
+function! LightlineCocErrors() abort
+  return s:lightline_coc_diagnostic('error', 'ERR')
+endfunction
+
+function! LightlineCocWarnings() abort
+  return s:lightline_coc_diagnostic('warning', 'WARN')
+endfunction
+
+function! LightlineCocInfos() abort
+  return s:lightline_coc_diagnostic('information', 'INFO')
+endfunction
+
+function! LightlineCocHints() abort
+  return s:lightline_coc_diagnostic('hints', 'HINT')
+endfunction
+
+" let g:lightline#bufferline#show_number  = 1
+" let g:lightline#bufferline#shorten_path = 1
+" let g:unite_force_overwrite_statusline = 1
 let g:vimfiler_force_overwrite_statusline = 1
 let g:vimshell_force_overwrite_statusline = 1
 
-" nmap <leader>1 <Plug>lightline#bufferline#go(1)
-" nmap <leader>2 <Plug>lightline#bufferline#go(2)
-" nmap <leader>3 <Plug>lightline#bufferline#go(3)
-
-let g:lightline#ale#indicator_checking = "\uf110"
-let g:lightline#ale#indicator_infos = "\uf129"
-let g:lightline#ale#indicator_warnings = "[Wrn]"
-let g:lightline#ale#indicator_errors = "[Err]"
-let g:lightline#ale#indicator_ok = "\uf00c"
-
 autocmd BufEnter ALELint call lightline#update()
+autocmd User CocDiagnosticChange call lightline#update()
 autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
 " ====================================================
 "
