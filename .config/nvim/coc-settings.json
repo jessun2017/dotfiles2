@@ -150,12 +150,12 @@
     "gtid",
     "isize",
     "mkdir",
+    "mongodb",
     "mysqlbackup",
     "println",
     "rustc",
     "struct",
     "usize",
-    "uuid",
     "uuid",
     "xargs",
     "xtrabackup"

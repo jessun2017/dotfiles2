@@ -10,6 +10,7 @@ export LOCAL_HTTP_PROXY='http://127.0.0.1:1087'
 # ===============================
 #
 # ============= OS ==============
+
 switch (uname)
     case 'Darwin'
         alias vim '/Applications/MacVim.app/Contents/bin/vim'
@@ -28,6 +29,11 @@ end
 # ===============================
 # 
 # ============ Alias ============
+# emacs
+if type -q 'emacs'
+   alias e='emacs -nw'
+end
+
 # git
 if type -q 'git'
     alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'

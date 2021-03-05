@@ -48,3 +48,8 @@ fi
 [ -d "$HOME/.cargo/bin" ] && export PATH="$HOME/.cargo/bin:$PATH"
 export TERM="xterm-256color"
 
+xrandr --output DP-0 --off --output DP-1 --off --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate normal --output DP-2 --mode 1920x1080 --pos 1920x0 --rotate normal
+
+export PATH=/home/jessun/.tiup/bin:$PATH
+
+export PATH=/home/jessun/.tiup/bin:$PATH
