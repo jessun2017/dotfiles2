@@ -275,8 +275,8 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 " ===================================================
 "
 " ========================'fzf.vim' =====================
-nmap <space>f :<C-U><C-R>=printf("Files")<CR><CR>
-nmap <space>g :<C-U><C-R>=printf("RG")<CR><CR>
+nmap <space><space> :<C-U><C-R>=printf("Files")<CR><CR>
+nmap <space>/ :<C-U><C-R>=printf("RG")<CR><CR>
 nmap <space>b :<C-U><C-R>=printf("Buffers")<CR><CR>
 "
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
@@ -414,8 +414,8 @@ nmap <space>rn <Plug>(coc-rename)
 " Formatting selected code.
 " xmap <leader>f  <Plug>(coc-format-selected)
 " nmap <leader>f  <Plug>(coc-format-selected)
-xmap <leader>f  :call CocAction('format') <CR>
-nmap <leader>f  :call CocAction('format') <CR>
+" xmap <leader>f :call CocAction('format') <CR>
+" nmap <leader>f  :call CocAction('format') <CR>
 
 augroup mygroup
   autocmd!
@@ -427,12 +427,12 @@ augroup end
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+xmap <space>a  <Plug>(coc-codeaction-selected)
+nmap <space>a  <Plug>(coc-codeaction-selected)
 " Remap keys for applying codeAction to the current line.
-nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <space>ca  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <space>f  <Plug>(coc-fix-current)
 
 " Introduce function text object
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
@@ -712,7 +712,7 @@ function! s:GrepArgs(...)
 endfunction
 
 " Keymapping for grep word under cursor with interactive mode
-nnoremap <silent> <space>W :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
+nnoremap <silent> <space>* :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
 nnoremap <silent> <space>w  :exe 'CocList -I --normal --input='.expand('<cword>').' words'<CR>
 vnoremap <leader>g :<C-u>call <SID>GrepFromSelected(visualmode())<CR>
 nnoremap <leader>g :<C-u>set operatorfunc=<SID>GrepFromSelected<CR>g@
