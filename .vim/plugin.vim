@@ -464,11 +464,11 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 
 " Mappings using CoCList:
 " Show all diagnostics.
-nnoremap <silent> <space>d  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <space>x  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 " nnoremap <silent> <space>e :CocCommand explorer<CR>
-nnoremap <silent> <space>x :CocCommand explorer<CR>
+nnoremap <silent> <space>d :CocCommand explorer<CR>
 " nnoremap <silent> <leader>nt :CocCommand explorer<CR>
 
 " Show commands.
