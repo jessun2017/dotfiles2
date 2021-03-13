@@ -139,12 +139,20 @@
     ">>": "gitUnstage"
   },
   "cSpell.userWords": [
+    "Apiw",
     "Condf",
+    "DONOT",
     "DUPL",
     "Deref",
+    "Grlocal",
+    "Inno",
     "LLVM",
+    "Metas",
+    "Mycnf",
     "Udeploy",
     "Urman",
+    "backuper",
+    "backupw",
     "beego",
     "destructure",
     "grpc",
@@ -154,11 +162,13 @@
     "mongodb",
     "mysqlbackup",
     "println",
+    "ptypes",
     "rustc",
     "struct",
     "usize",
     "uuid",
     "xargs",
     "xtrabackup"
-  ]
+  ],
+  "coc.preferences.extensionUpdateCheck": "daily"
 }
