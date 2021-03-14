@@ -19,7 +19,6 @@
   "rust-analyzer.diagnostics.disabled": ["macro-error"],
   "rust-analyzer.cargo.allFeatures": true,
   "rust-analyzer.updates.prompt": false,
-  "rust-analyzer.cargo.loadOutDirsFromCheck": true,
   "rust-analyzer.procMacro.enable": true,
   "rust-analyzer.hoverActions.linksInHover": true,
   "rust-analyzer.lens.methodReferences": true,
@@ -139,13 +138,20 @@
     ">>": "gitUnstage"
   },
   "cSpell.userWords": [
+    "Apiw",
     "Condf",
+    "DONOT",
     "DUPL",
     "Deref",
+    "Grlocal",
+    "Inno",
     "LLVM",
     "Metas",
+    "Mycnf",
     "Udeploy",
     "Urman",
+    "backuper",
+    "backupw",
     "beego",
     "destructure",
     "grpc",
@@ -155,6 +161,7 @@
     "mongodb",
     "mysqlbackup",
     "println",
+    "ptypes",
     "rustc",
     "struct",
     "ucommon",
@@ -164,5 +171,6 @@
     "uuid",
     "xargs",
     "xtrabackup"
-  ]
+  ],
+  "coc.preferences.extensionUpdateCheck": "daily"
 }

@@ -467,9 +467,8 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 nnoremap <silent> <space>x  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" nnoremap <silent> <space>e :CocCommand explorer<CR>
 nnoremap <silent> <space>d :CocCommand explorer<CR>
-" nnoremap <silent> <leader>nt :CocCommand explorer<CR>
+nnoremap <silent> <space>f :CocCommand explorer --preset floating<CR>
 
 " Show commands.
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
